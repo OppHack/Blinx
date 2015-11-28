@@ -1,8 +1,11 @@
 application: blinx-1143
-version: 2
+version: 3
 runtime: php55
 api_version: 1
 threadsafe: yes
+
+env_variables:
+  app_context: /
 
 handlers:
 - url: /favicon\.ico
@@ -18,7 +21,7 @@ handlers:
 - url: /google-callback.php
   script: google-callback.php
 
-- url: /user-registration
+- url: /detailreg-user.php
   script: detailreg-user.php
 
 - url: .*
@@ -29,3 +32,4 @@ skip_files:
 - dbscripts/
 - form-1/
 - README.md
+- .DS_Store
