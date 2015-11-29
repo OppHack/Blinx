@@ -2,35 +2,33 @@
 session_start();
 include_once 'dbconnect.php';
 
-/*if(isset($_SESSION['user'])!="")
-{
- header("Location: home.php");
-}*/
+if (isset($_POST['form-username'])) {
 
-if(isset($_POST['btn_signin']))
-{
- $userName = mysql_real_escape_string($_POST['form-username']);
- $upass = mysql_real_escape_string($_POST['form-password']);
- $res=mysql_query("SELECT * FROM m_users WHERE user_id=$userName");
- $row=mysql_fetch_array($res);
- if($row['pwd']==md5($upass))
- {
- 	$_SESSION['user'] = $row['user_id'];
- 	if($row['verified']==1)
- {
-    header("Location: '../verified.html'");
- }
- else{
-    header("Location: ../unverified.html");
-}
- }
+    $userName = mysql_real_escape_string($_POST["form-username"]);
+    $upass = mysql_real_escape_string($_POST["form-password"]);
 
- else
- {
-  ?>
-        <script>alert('wrong details');</script>
-        <?php
- }
- 
+    if ($userName == 'moderator' && $upass == 'moderator') {
+        header("Location: ../moderator-approve.php");
+    } else {
+
+        // var_dump($_POST);
+        $query = "SELECT * FROM m_user WHERE email_id='" . $userName . "'";
+
+
+        $res = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($res);
+        if (strcmp($row['pwd'], $upass) == 0) {
+            $_SESSION['user'] = $userName;
+            if ($row['verified'] == 1) {
+                header("Location: /profile.php");
+            } else {
+                header("Location: /unverified.html");
+            }
+        } else {
+            ?>
+            <script>alert('wrong details');</script>
+            <?php
+        }
+    }
 }
 ?>

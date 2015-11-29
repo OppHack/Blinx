@@ -3,6 +3,15 @@ $google_auth_url = '';
 $loginUrl = '';
 if (is_null($_SESSION['fb_access_token'])) {
 
+    $ssl = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on');
+    $sp = strtolower($_SERVER['SERVER_PROTOCOL']);
+    $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
+    $port = $_SERVER['SERVER_PORT'];
+    $port = ((!$ssl && $port == '80') || ($ssl && $port == '443')) ? '' : ':' . $port;
+    $host = (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null);
+    $host = isset($host) ? $host : $_SERVER['SERVER_NAME'] . $port;
+    $baseURL = $protocol . '://' . $host;
+
     $fb = new Facebook\Facebook([
         'app_id' => '427329234142944',
         'app_secret' => '71ecf083975587c1e511762d6f2001ea',
@@ -12,7 +21,7 @@ if (is_null($_SESSION['fb_access_token'])) {
     $helper = $fb->getRedirectLoginHelper();
 
     $permissions = ['email', 'public_profile']; // Optional permissions
-    $loginUrl = $helper->getLoginUrl('http://localhost:8888/blinx/fb-callback.php', $permissions);
+    $loginUrl = $helper->getLoginUrl($baseURL.$app_context.'/fb-callback.php', $permissions);
 
     $client = new Google_Client();
     $client->setAuthConfigFile('private/client_secrets.json');
@@ -41,6 +50,7 @@ $this->layout('bootstrap-template', ['title' => 'Blinx - Home'])
                     <div class="form-top">
                         <div class="form-top-left">
                             <h3>Login to our site</h3>
+
                             <p>Enter username and password to log on:</p>
                         </div>
                         <div class="form-top-right">

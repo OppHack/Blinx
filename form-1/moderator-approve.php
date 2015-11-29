@@ -109,7 +109,7 @@
                                                  // var_dump($_POST);
                                                 //$_Zero=0;
                                                 $query ="SELECT * FROM m_user WHERE verified= 0";
-                                                //echo $query;    
+                                                //echo $query;
 
 
                                         $results=mysqli_query($conn, $query);
@@ -128,11 +128,11 @@
                                                 echo '<td><a href="#" data-toggle="modal" data-target="#myModal" role="button">' . $row_users['first_name'] .'</a></td>';
                                                 echo '<td><a href="' . $row_users['document_path'] . '">Document</a></td>';
                                                 echo '<td>' . $row_users['user_type'] . '</td>';
-                                                echo '<td><p><a href="php/moderator_action.php?action=approve&userId=' . $row_users['user_id'] . '"' . '" class="btn btn-primary" role="button">Approve</a> <a href="php/moderator_action.php?action=reject&userId=' . $row_users['user_id'] . '"' . '" class="btn btn-default"  data-toggle="modal" data-target="#reasonModal" role="button">Decline</a></p></td>';
+                                                echo '<td><p><a href="../moderator_action.php?action=approve&userId=' . $row_users['user_id'] . '"' . '" class="btn btn-primary" role="button">Approve</a> <a href="../moderator_action.php?action=reject&userId=' . $row_users['user_id'] . '"' . '" class="btn btn-default"  data-toggle="modal" data-target="#reasonModal" role="button">Decline</a></p></td>';
                                                 echo '</tr>';
                                             }
                                             ?>
-                                
+
                                     <!--<tr class="active">
                                         &lt;!&ndash;<td><img src="assets/img/backgrounds/1.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="500"></td>&ndash;&gt;
                                         <td><a href="#" data-toggle="modal" data-target="#myModal" role="button">Ajay Bose</a></td>>
