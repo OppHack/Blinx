@@ -38,7 +38,6 @@
         include_once 'php/dbconnect.php';
          // var_dump($_POST);
         $query ="SELECT * FROM m_user WHERE email_id='".$_SESSION['user']."'";
-        echo $query;    
         $res=mysqli_query($conn, $query);
         $row=mysqli_fetch_array($res);
     ?>
