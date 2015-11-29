@@ -150,7 +150,7 @@ session_start();
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-password">Password</label>
-                                    <input type="text" name="form-password" placeholder="Password..."
+                                    <input type="password" name="form-password" placeholder="Password..."
                                            class="form-password form-control" id="form-new-password">
                                 </div>
                                 <button type="submit" class="btn_signin" name="btn_signin">Sign me up!</button>
