@@ -24,6 +24,9 @@ handlers:
 - url: /detailreg-user.php
   script: detailreg-user.php
 
+- url: /logout.php
+  script: logout.php
+
 - url: .*
   script: index.php
 
