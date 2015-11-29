@@ -16,5 +16,5 @@ elseif ($decision == "decline") {
 	mysqli_query($conn, $query);
 }
 
-header("Location: moderator-approve.php");
+header("Location: ../moderator-approve.php");
 ?>

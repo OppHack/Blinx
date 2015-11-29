@@ -128,7 +128,7 @@
                                                 echo '<td><a href="#" data-toggle="modal" data-target="#myModal" role="button">' . $row_users['first_name'] .'</a></td>';
                                                 echo '<td><a href="' . $row_users['document_path'] . '">Document</a></td>';
                                                 echo '<td>' . $row_users['user_type'] . '</td>';
-                                                echo '<td><p><a href="php/moderator_acion.php?action=approve&userId=' . $row_users['user_id'] . '"' . '" class="btn btn-primary" role="button">Approve</a> <a href="php/moderator_acion.php?action=reject&userId=' . $row_users['user_id'] . '"' . '" class="btn btn-default"  data-toggle="modal" data-target="#reasonModal" role="button">Decline</a></p></td>';
+                                                echo '<td><p><a href="php/moderator_action.php?action=approve&userId=' . $row_users['user_id'] . '"' . '" class="btn btn-primary" role="button">Approve</a> <a href="php/moderator_action.php?action=reject&userId=' . $row_users['user_id'] . '"' . '" class="btn btn-default"  data-toggle="modal" data-target="#reasonModal" role="button">Decline</a></p></td>';
                                                 echo '</tr>';
                                             }
                                             ?>
@@ -241,7 +241,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onClick>Submit</button>
                     </div>
                 </div>
 
